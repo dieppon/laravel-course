@@ -13,9 +13,9 @@ class HobbyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($name,$age)
+    public function index()
     {
-        dd($name . ' is ' . $age . ' years old');
+        dd('index');
     }
 
     /**

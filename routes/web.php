@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HobbyController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +23,10 @@ Route::get('/info', function () {
     return view('info');
 });
 
-Route::get('/test/{name}/{age}', [App\Http\Controllers\HobbyController::class, 'index']);
+//Route::get('/test/{name}/{age}', [HobbyController::class, 'index']);
+
+Route::resource('hobby', HobbyController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
