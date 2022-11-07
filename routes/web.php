@@ -21,6 +21,7 @@ Route::get('/info', function () {
     return view('info');
 });
 
+Route::get('/test/{name}/{age}', [App\Http\Controllers\HobbyController::class, 'index']);
 
 Auth::routes();
 
