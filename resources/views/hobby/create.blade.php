@@ -10,12 +10,14 @@
                         <form action="/hobby" method="post">
                             @csrf
                             <div class="form-group mb-3">
-                                <label class="form-label" for="name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                                <label class="form-label{{ $errors->has('name') ? ' text-danger' : '' }}" for="name">{{ __('Name') }}</label>
+                                <input type="text" class="form-control{{ $errors->has('name') ? ' border-danger' : '' }}" id="name" name="name" value="{{ old('name') }}">
+                                <small class="form-text{{ $errors->has('name') ? ' text-danger' : '' }}">{!! $errors->first('name') !!}</small>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="form-label" for="description">{{ __('Description') }}</label>
-                                <textarea class="form-control" id="description" name="description" rows="5" value="{{ old('description') }}"></textarea>
+                                <label class="form-label{{ $errors->has('description') ? ' text-danger' : '' }}" for="description">{{ __('Description') }}</label>
+                                <textarea class="form-control{{ $errors->has('description') ? ' border-danger' : '' }}" id="description" name="description" rows="5" value="{{ old('description') }}"></textarea>
+                                <small class="form-text{{ $errors->has('description') ? ' text-danger' : '' }}">{!! $errors->first('description') !!}</small>
                             </div>
                             <input class="btn btn-primary" type="submit" value="{{ __('Save Hobby') }}">
                         </form>
