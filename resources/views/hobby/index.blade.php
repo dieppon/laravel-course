@@ -11,9 +11,10 @@
                         <ul class="list-group">
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">
-                                    {{ $hobby->name }}
+                                    <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
                                 </li>
                             @endforeach
+                        </ul>
                     </div>
                 </div>
                 <div class="mt-2">
