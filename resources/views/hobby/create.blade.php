@@ -7,7 +7,8 @@
                 <div class="card">
                     <div class="card-header">{{ __('Create New Hobby') }}</div>
                     <div class="card-body">
-                        <form>
+                        <form action="/hobby" method="post">
+                            @csrf
                             <div class="form-group mb-3">
                                 <label class="form-label" for="name">{{ __('Name') }}</label>
                                 <input type="text" class="form-control" id="name" name="name">
