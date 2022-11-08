@@ -12,6 +12,7 @@
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">
                                     <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
+                                    <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
                                 </li>
                             @endforeach
                         </ul>
