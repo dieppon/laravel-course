@@ -12,12 +12,12 @@
                             @method('PUT')
                             <div class="form-group mb-3">
                                 <label class="form-label{{ $errors->has('name') ? ' text-danger' : '' }}" for="name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control{{ $errors->has('name') ? ' border-danger' : '' }}" id="name" name="name" value="{{ $hobby->name ?? old('name') }}">
+                                <input type="text" class="form-control{{ $errors->has('name') ? ' border-danger' : '' }}" id="name" name="name" value="{{ old('name') ?? $hobby->name }}">
                                 <small class="form-text{{ $errors->has('name') ? ' text-danger' : '' }}">{!! $errors->first('name') !!}</small>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label{{ $errors->has('description') ? ' text-danger' : '' }}" for="description">{{ __('Description') }}</label>
-                                <textarea class="form-control{{ $errors->has('description') ? ' border-danger' : '' }}" id="description" name="description" rows="5" value="{{  $hobby->description ?? old('description') }}"></textarea>
+                                <textarea class="form-control{{ $errors->has('description') ? ' border-danger' : '' }}" id="description" name="description" rows="5" value="{{ old('description') ?? $hobby->description }}"></textarea>
                                 <small class="form-text{{ $errors->has('description') ? ' text-danger' : '' }}">{!! $errors->first('description') !!}</small>
                             </div>
                             <input class="btn btn-primary" type="submit" value="{{ __('Update Hobby') }}">

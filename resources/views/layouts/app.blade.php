@@ -40,6 +40,9 @@
                         <li class="nav-item">
                             <a class="nav-link{{ Request::is('hobby*') ? ' active' : '' }}" href="/hobby">{{ __('Hobbies') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link{{ Request::is('tag*') ? ' active' : '' }}" href="/tag">{{ __('Tags') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

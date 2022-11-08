@@ -5,15 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('All the hobbies') }}</div>
+                    <div class="card-header">{{ __('All the tags') }}</div>
 
                     <div class="card-body">
                         <ul class="list-group">
-                            @foreach($hobbies as $hobby)
+                            @foreach($tags as $tag)
                                 <li class="list-group-item">
-                                    <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
-                                    <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
-                                    <form class="float-end" style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
+                                    <span style="font-size: 130%;" class="ms-2 badge bg-{{ $tag->style }}">{{ $tag->name }}</span>
+                                    <a class="btn btn-sm btm-light ms-2" href="/tag/{{ $tag->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit tag') }}</a>
+                                    <form class="float-end" style="display: inline;" action="/tag/{{ $tag->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="{{ __('Delete') }}">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <a class="btn btn-success btn-sm" href="/hobby/create"><i class="fas fa-plus-circle"></i> {{ __('Create new hobby') }}</a>
+                    <a class="btn btn-success btn-sm" href="/tag/create"><i class="fas fa-plus-circle"></i> {{ __('Create new tag') }}</a>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HobbyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/info', function () {
 //Route::get('/test/{name}/{age}', [HobbyController::class, 'index']);
 
 Route::resource('hobby', HobbyController::class);
+
+Route::resource('tag', TagController::class);
 
 Auth::routes();
 
