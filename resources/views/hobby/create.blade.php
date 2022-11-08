@@ -11,11 +11,11 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="form-label" for="name">{{ __('Name') }}</label>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label" for="description">{{ __('Description') }}</label>
-                                <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="5" value="{{ old('description') }}"></textarea>
                             </div>
                             <input class="btn btn-primary" type="submit" value="{{ __('Save Hobby') }}">
                         </form>
