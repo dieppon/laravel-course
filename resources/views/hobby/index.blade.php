@@ -20,6 +20,8 @@
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="{{ __('Delete') }}">
                                     </form>
                                     @endauth
+                                    {{-- difffForHumans() comes from carbon PHP library: https://carbon.nesbot.com/docs/ --}}
+                                    <span class="float-end mx-2">{{ $hobby->created_at->diffForHumans() }}</span>
                                 </li>
                             @endforeach
                         </ul>
