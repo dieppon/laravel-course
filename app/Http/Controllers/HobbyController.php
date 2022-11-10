@@ -8,6 +8,11 @@ use App\Models\Hobby;
 
 class HobbyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,6 +57,7 @@ class HobbyController extends Controller
         $hobby = new Hobby([
             'name' => $request['name'],
             'description' => $request['description'],
+            'user_id' => auth()->id(),
         ]);
 
         $hobby->save();

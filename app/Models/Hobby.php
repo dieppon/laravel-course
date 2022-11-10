@@ -25,5 +25,6 @@ class Hobby extends Model
     protected $fillable = [
         'name',
         'description',
+        'user_id',
     ];
 }
