@@ -17,7 +17,8 @@ class HobbyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->realText(30),
+            'description' => fake()->realText(),
         ];
     }
 }
