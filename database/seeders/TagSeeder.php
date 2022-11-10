@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
@@ -14,6 +14,25 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $tags = [
+            'Sports' => 'primary', // blue
+            'Relaxation' => 'secondary', // grey
+            'Fun' => 'warning', // yellow
+            'Nature' => 'success', // green
+            'Inspiration' => 'light', // white grey
+            'Friends' => 'info', // turquoise
+            'Love' => 'danger', // red
+            'Interest' => 'dark' // black-white
+        ];
+
+        foreach ($tags as $key => $value) {
+            $tag = new Tag(
+                [
+                    'name' => $key,
+                    'style' => $value
+                ]
+            );
+            $tag->save();
+        }
     }
 }
