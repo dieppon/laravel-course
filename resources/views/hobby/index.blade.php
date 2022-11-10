@@ -23,6 +23,12 @@
                         </ul>
                     </div>
                 </div>
+
+                <div class="mt-3">
+                    {{-- This is a bit different that the course: https://www.itsolutionstuff.com/post/laravel-9-pagination-example-tutorialexample.html --}}
+                    {{ $hobbies->withQueryString()->links('pagination::bootstrap-5') }}
+                </div>
+
                 <div class="mt-2">
                     <a class="btn btn-success btn-sm" href="/hobby/create"><i class="fas fa-plus-circle"></i> {{ __('Create new hobby') }}</a>
                 </div>

@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <a class="btn btn-primary btn-sm" href="/hobby"><i class="fas fa-arrow-circle-up"></i> {{ __('Back to overview') }}</a>
+                    <a class="btn btn-primary btn-sm" href="{{ URL::previous() }}"><i class="fas fa-arrow-circle-up"></i> {{ __('Back to overview') }}</a>
                 </div>
             </div>
         </div>
