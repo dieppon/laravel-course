@@ -9,6 +9,10 @@ class Tag extends Model
 {
     use HasFactory;
 
+    public function hobbies() {
+        return $this->belongsToMany('App\Models\Hobby');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
