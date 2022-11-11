@@ -16,7 +16,7 @@
                                     <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
                                     @endauth
                                     {{-- Let's improve this with proper translation and singular/plurals --}}
-                                    <span class="mx-2">{{ __('Posted by :author', [ 'author' => $hobby->user->name, 'num' => $hobby->user->hobbies->count() ]) }} ({{$hobby->user->hobbies->count() }} {{ trans_choice('hobby|hobbies', $hobby->user->hobbies->count()) }})</span>
+                                    <span class="mx-2">{!! __('Posted by <a href=":link">:author</a>', [ 'link' => '/user/' . $hobby->user->id, 'author' => $hobby->user->name, 'num' => $hobby->user->hobbies->count() ]) !!} ({{$hobby->user->hobbies->count() }} {{ trans_choice('hobby|hobbies', $hobby->user->hobbies->count()) }})</span>
                                     @auth
                                     <form class="float-end" style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
                                         @csrf
