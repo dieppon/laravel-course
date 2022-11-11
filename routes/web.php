@@ -40,3 +40,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/hobby/tag/{tag_id}', [HobbyTagController::class, 'getFilteredHobbies'])->name('hobby_tag');
 
+// Attach tags to hobbies
+Route::get('/hobby/{hobby_id}/tag/{tag_id}/attach', [HobbyTagController::class, 'attachTag']);
+
+// Detach tags from hobbies
+Route::get('/hobby/{hobby_id}/tag/{tag_id}/detach', [HobbyTagController::class, 'detachTag']);
