@@ -5,8 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('All the hobbies') }}</div>
-
+                    @isset($filter)
+                    <div class="card-header">
+                        {{ __('Filtered hobbies by') }}
+                        <span style="font-size: 130%;" class="badge bg-{{ $filter->style }} ms-1">{{ $filter->name }}</span>
+                        <span class="float-end"><a href="/hobby">{{ __('Show all hobbies') }}</a></span>
+                    </div>
+                    @else
+                        <div class="card-header">{{ __('All the hobbies') }}</div>
+                    @endisset
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach($hobbies as $hobby)
@@ -28,7 +35,7 @@
                                     <span class="float-end mx-2">{{ $hobby->created_at->diffForHumans() }}</span>
                                     <br/>
                                     @foreach($hobby->tags as $tag)
-                                        <a href=""><span class="badge bg-{{ $tag->style }} me-1">{{ $tag->name }}</span></a>
+                                        <a href="/hobby/tag/{{ $tag->id }}"><span class="badge bg-{{ $tag->style }} me-1">{{ $tag->name }}</span></a>
                                     @endforeach
                                 </li>
                             @endforeach
