@@ -31,9 +31,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @auth()
+                        <li class="nav-item">
+                            <a class="nav-link{{ Request::is('/') ? ' active' : '' }}" href="/home">{{ __('Home') }}</a>
+                        </li>
+                        @endauth
+                        @guest()
                         <li class="nav-item">
                             <a class="nav-link{{ Request::is('/') ? ' active' : '' }}" href="/">{{ __('Home') }}</a>
                         </li>
+                        @endguest
                         <li class="nav-item">
                             <a class="nav-link{{ Request::is('info') ? ' active' : '' }}" href="/info">{{ __('Info') }}</a>
                         </li>
@@ -95,7 +102,7 @@
 
             @isset($message_warning)
                 <div class="container">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         {!! $message_warning !!}
                     </div>
                 </div>
