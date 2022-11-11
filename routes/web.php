@@ -38,6 +38,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// Filtered View
 Route::get('/hobby/tag/{tag_id}', [HobbyTagController::class, 'getFilteredHobbies'])->name('hobby_tag');
 
 // Attach tags to hobbies
