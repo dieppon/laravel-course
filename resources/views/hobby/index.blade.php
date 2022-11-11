@@ -26,6 +26,10 @@
                                     @endauth
                                     {{-- difffForHumans() comes from carbon PHP library: https://carbon.nesbot.com/docs/ --}}
                                     <span class="float-end mx-2">{{ $hobby->created_at->diffForHumans() }}</span>
+                                    <br/>
+                                    @foreach($hobby->tags as $tag)
+                                        <a href=""><span class="badge bg-{{ $tag->style }} me-1">{{ $tag->name }}</span></a>
+                                    @endforeach
                                 </li>
                             @endforeach
                         </ul>
