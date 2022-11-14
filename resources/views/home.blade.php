@@ -3,17 +3,23 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <h2>Hello {{ auth()->user()->name }}</h2>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h2>{{ __('Hello :name', ['name' => auth()->user()->name ]) }}</h2>
+                            <h5>{{ __('Your Motto') }}</h5>
+                            <p>{{ auth()->user()->motto ?? '' }}</p>
+                            <h5>{{ __('Your "About Me" -Text') }}</h5>
+                            <p>{{ auth()->user()->about_me ?? '' }}</p>
                         </div>
-                    @endif
+                        <div class="col-md-3">
+                            <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ auth()->user()->name }}">
+                        </div>
+                    </div>
 
                     <ul class="list-group">
                         @isset($hobbies)
@@ -22,7 +28,10 @@
                             @endif
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">
-                                    <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
+                                    <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">
+                                        <img src="/img/thumb_landscape.jpg" alt="thumb">
+                                        {{ $hobby->name }}
+                                    </a>
                                     @auth
                                         <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
                                     @endauth
