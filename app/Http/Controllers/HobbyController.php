@@ -119,6 +119,7 @@ class HobbyController extends Controller
     {
         $request->validate([
             'name' => 'required|min:3',
+            'image' => 'mimes:jpeg,jpg,bmp,png,gif|dimensions:ratio=4/3',
             'description' => 'required|min:5',
         ]);
 
