@@ -17,6 +17,12 @@
                                     <ul class="list-group">
                                         @foreach($user->hobbies as $hobby)
                                             <li class="list-group-item">
+                                                @if( file_exists('img/hobbies/' . $hobby->id . '_thumb.jpg') )
+                                                    <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">
+                                                        <img src="/img/hobbies/{{ $hobby->id }}_thumb.jpg" alt="{{ __('Hobby thumb') }}">
+                                                    </a>
+                                                    &nbsp;
+                                                @endif
                                                 <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
                                                 @auth
                                                     <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
