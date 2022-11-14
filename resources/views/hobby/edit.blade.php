@@ -15,11 +15,12 @@
                                 <input type="text" class="form-control{{ $errors->has('name') ? ' border-danger' : '' }}" id="name" name="name" value="{{ old('name') ?? $hobby->name }}">
                                 <small class="form-text{{ $errors->has('name') ? ' text-danger' : '' }}">{!! $errors->first('name') !!}</small>
                             </div>
-                            <div class="mb-3">
-                                @if( file_exists('img/hobbies/' . $hobby->id . '_large.jpg') )
+                            @if( file_exists('img/hobbies/' . $hobby->id . '_large.jpg') )
+                                <div class="mb-3">
                                     <img style="max-width: 400px; max-height: 300px" src="/img/hobbies/{{ $hobby->id }}_large.jpg" alt="{{ __('Hobby large image') }}">
-                                @endif
-                            </div>
+                                    <a class="btn btn-sm btn-outline-danger float-end" href="/delete-images/hobby/{{ $hobby->id }}">{{ __('Delete image') }}</a>
+                                </div>
+                            @endif
                             <div class="form-group mb-3">
                                 <label class="form-label{{ $errors->has('image') ? ' text-danger' : '' }}" for="image">{{ __('Image') }}</label>
                                 <input type="file" class="form-control{{ $errors->has('image') ? ' border-danger' : '' }}" id="image" name="image" value="">
