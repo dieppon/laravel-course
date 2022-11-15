@@ -18,12 +18,25 @@
                         <ul class="list-group">
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">
-                                    <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
+                                    @if( file_exists('img/hobbies/' . $hobby->id . '_thumb.jpg') )
+                                        <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">
+                                            <img src="/img/hobbies/{{ $hobby->id }}_thumb.jpg" alt="{{ __('Hobby thumb') }}">
+                                        </a>
+                                        &nbsp;
+                                    @endif
+                                        <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
                                     @auth
                                     <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
                                     @endauth
                                     {{-- Let's improve this with proper translation and singular/plurals --}}
-                                    <span class="mx-2">{!! __('Posted by <a href=":link">:author</a>', [ 'link' => '/user/' . $hobby->user->id, 'author' => $hobby->user->name, 'num' => $hobby->user->hobbies->count() ]) !!} ({{$hobby->user->hobbies->count() }} {{ trans_choice('hobby|hobbies', $hobby->user->hobbies->count()) }})</span>
+                                    <span class="mx-2">
+                                        {!! __('Posted by <a href=":link">:author</a>', [ 'link' => '/user/' . $hobby->user->id, 'author' => $hobby->user->name, 'num' => $hobby->user->hobbies->count() ]) !!} ({{$hobby->user->hobbies->count() }} {{ trans_choice('hobby|hobbies', $hobby->user->hobbies->count()) }})
+                                        <a href="/user/{{ $hobby->user->id }}">
+                                            @if( file_exists('img/users/' . $hobby->user->id . '_thumb.jpg') )
+                                                <img class="rounded" src="/img/users/{{ $hobby->user->id }}_thumb.jpg" alt="{{ __('User thumb') }}">
+                                            @endif
+                                        </a>
+                                    </span>
                                     @auth
                                     <form class="float-end" style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
                                         @csrf

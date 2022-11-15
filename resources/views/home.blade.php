@@ -3,17 +3,28 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <h2>Hello {{ auth()->user()->name }}</h2>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h2>{{ __('Hello :name', ['name' => auth()->user()->name ]) }}</h2>
+                            <h5>{{ __('Your Motto') }}</h5>
+                            <p>{{ auth()->user()->motto ?? '' }}</p>
+                            <h5>{{ __('Your "About Me" -Text') }}</h5>
+                            <p>{{ auth()->user()->about_me ?? '' }}</p>
+                            <p>
+                                <a class="btn btn-primary" href="user/{{ auth()->user()->id }}/edit">{{ __('Edit my profile') }}</a>
+                            </p>
                         </div>
-                    @endif
+                        @if( file_exists('img/users/' . auth()->user()->id . '_large.jpg') )
+                            <div class="col-md-3">
+                                <img class="img-thumbnail" src="/img/users/{{ auth()->user()->id }}_large.jpg" alt="{{ __('User thumb') }}">
+                            </div>
+                        @endif
+                    </div>
 
                     <ul class="list-group">
                         @isset($hobbies)
@@ -22,6 +33,12 @@
                             @endif
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">
+                                    @if( file_exists('img/hobbies/' . $hobby->id . '_thumb.jpg') )
+                                        <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">
+                                            <img src="/img/hobbies/{{ $hobby->id }}_thumb.jpg" alt="{{ __('Hobby thumb') }}">
+                                        </a>
+                                        &nbsp;
+                                    @endif
                                     <a title="{{ __('Show details') }}" href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}</a>
                                     @auth
                                         <a class="btn btn-sm btm-light ms-2" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> {{ __('Edit hobby') }}</a>
