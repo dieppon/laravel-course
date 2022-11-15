@@ -10,6 +10,13 @@ class HobbyPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user, $ability)
+    {
+        if( $user->role === 'admin' ) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -53,7 +60,7 @@ class HobbyPolicy
      */
     public function update(User $user, Hobby $hobby)
     {
-        //
+        return $user->id === $hobby->user_id;
     }
 
     /**
@@ -65,7 +72,7 @@ class HobbyPolicy
      */
     public function delete(User $user, Hobby $hobby)
     {
-        //
+        return $user->id === $hobby->user_id;
     }
 
     /**
