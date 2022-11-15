@@ -42,10 +42,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/hobby/tag/{tag_id}', [HobbyTagController::class, 'getFilteredHobbies'])->name('hobby_tag');
 
 // Attach tags to hobbies
-Route::get('/hobby/{hobby_id}/tag/{tag_id}/attach', [HobbyTagController::class, 'attachTag']);
+Route::get('/hobby/{hobby_id}/tag/{tag_id}/attach', [HobbyTagController::class, 'attachTag'])->middleware('auth');
 
 // Detach tags from hobbies
-Route::get('/hobby/{hobby_id}/tag/{tag_id}/detach', [HobbyTagController::class, 'detachTag']);
+Route::get('/hobby/{hobby_id}/tag/{tag_id}/detach', [HobbyTagController::class, 'detachTag'])->middleware('auth');
 
 // Delete images of hobby
 Route::get('/delete-images/hobby/{hobby_id}', [HobbyController::class, 'deleteImages']);
