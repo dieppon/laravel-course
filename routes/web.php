@@ -49,3 +49,6 @@ Route::get('/hobby/{hobby_id}/tag/{tag_id}/detach', [HobbyTagController::class, 
 
 // Delete images of hobby
 Route::get('/delete-images/hobby/{hobby_id}', [HobbyController::class, 'deleteImages']);
+
+// Delete images of hobby
+Route::get('/delete-images/user/{user_id}', [UserController::class, 'deleteImages']);

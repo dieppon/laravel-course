@@ -15,6 +15,9 @@
                             <p>{{ auth()->user()->motto ?? '' }}</p>
                             <h5>{{ __('Your "About Me" -Text') }}</h5>
                             <p>{{ auth()->user()->about_me ?? '' }}</p>
+                            <p>
+                                <a class="btn btn-primary" href="user/{{ auth()->user()->id }}/edit">{{ __('Edit my profile') }}</a>
+                            </p>
                         </div>
                         <div class="col-md-3">
                             <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ auth()->user()->name }}">
