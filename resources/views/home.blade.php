@@ -19,9 +19,11 @@
                                 <a class="btn btn-primary" href="user/{{ auth()->user()->id }}/edit">{{ __('Edit my profile') }}</a>
                             </p>
                         </div>
-                        <div class="col-md-3">
-                            <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ auth()->user()->name }}">
-                        </div>
+                        @if( file_exists('img/users/' . auth()->user()->id . '_large.jpg') )
+                            <div class="col-md-3">
+                                <img class="img-thumbnail" src="/img/users/{{ auth()->user()->id }}_large.jpg" alt="{{ __('User thumb') }}">
+                            </div>
+                        @endif
                     </div>
 
                     <ul class="list-group">

@@ -52,7 +52,15 @@
                                 @endif
                             </div>
                             <div class="col-md-3">
-                                <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ $user->name }}">
+                                @if( Auth::user() && file_exists('img/users/' . $user->id . '_large.jpg') )
+                                    <a href="/img/users/{{ $user->id }}_large.jpg" data-lightbox="/img/users/{{ $user->id }}_large.jpg" data-title="{{ $user->name }}">
+                                        <img class="img-fluid" src="/img/users/{{ $user->id }}_large.jpg" alt="{{ __('User large image') }}">
+                                    </a>
+                                    <i class="fa fa-search-plus"></i> {{ __('Click image to enlarge') }}
+                                @endif
+                                @if( !Auth::user() && file_exists('img/users/' . $user->id . '_pixelated.jpg') )
+                                    <img class="img-fluid" src="/img/users/{{ $user->id }}_pixelated.jpg" alt="{{ __('User pixelated image') }}">
+                                @endif
                             </div>
 
                         </div>
