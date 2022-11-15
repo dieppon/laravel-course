@@ -29,13 +29,13 @@
                                                 @endauth
                                                 {{-- Let's improve this with proper translation and singular/plurals --}}
                                                 <span class="mx-2">{!! __('Posted by <a href=":link">:author</a>', [ 'link' => '/user/' . $hobby->user->id, 'author' => $hobby->user->name, 'num' => $hobby->user->hobbies->count() ]) !!} ({{$hobby->user->hobbies->count() }} {{ trans_choice('hobby|hobbies', $hobby->user->hobbies->count()) }})</span>
-                                                @auth
+                                                @can('delete', $hobby)
                                                     <form class="float-end" style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="{{ __('Delete') }}">
                                                     </form>
-                                                @endauth
+                                                @endcan
                                                 {{-- difffForHumans() comes from carbon PHP library: https://carbon.nesbot.com/docs/ --}}
                                                 <span class="float-end mx-2">{{ $hobby->created_at->diffForHumans() }}</span>
                                                 <br/>
