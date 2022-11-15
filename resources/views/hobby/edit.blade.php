@@ -20,12 +20,13 @@
                                     <img style="max-width: 400px; max-height: 300px" src="/img/hobbies/{{ $hobby->id }}_large.jpg" alt="{{ __('Hobby large image') }}">
                                     <a class="btn btn-sm btn-outline-danger float-end" href="/delete-images/hobby/{{ $hobby->id }}">{{ __('Delete image') }}</a>
                                 </div>
-                            @endif
+                            @else
                             <div class="form-group mb-3">
                                 <label class="form-label{{ $errors->has('image') ? ' text-danger' : '' }}" for="image">{{ __('Image') }}</label>
                                 <input type="file" class="form-control{{ $errors->has('image') ? ' border-danger' : '' }}" id="image" name="image" value="">
                                 <small class="form-text{{ $errors->has('image') ? ' text-danger' : '' }}">{!! $errors->first('image') !!}</small>
                             </div>
+                            @endif
                             <div class="form-group mb-3">
                                 <label class="form-label{{ $errors->has('description') ? ' text-danger' : '' }}" for="description">{{ __('Description') }}</label>
                                 <textarea class="form-control{{ $errors->has('description') ? ' border-danger' : '' }}" id="description" name="description" rows="5" value="{{ old('description') ?? $hobby->description }}"></textarea>
